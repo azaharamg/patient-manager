@@ -30,6 +30,9 @@ const Form = () => {
     }
   };
 
+  // Delete error message
+  updateError(false);
+
   return (
     <Fragment>
       <h2>Crear Cita</h2>
