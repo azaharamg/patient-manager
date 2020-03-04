@@ -9,6 +9,7 @@ const Form = () => {
     time: '',
     symptom: ''
   });
+  const [error, updateError] = useState(false);
 
   const updateState = e => {
     updateAppointment({
@@ -19,10 +20,23 @@ const Form = () => {
 
   const { pet, owner, date, time, symptom } = appointment;
 
+  const submitAppointment = e => {
+    e.preventDefault();
+
+    //Authenticate fields
+    if (pet.trim() === '' || owner.trim() === '' || date.trim() === '' || time.trim() === '' || symptom.trim() === '') {
+      updateError(true);
+      return;
+    }
+  };
+
   return (
     <Fragment>
       <h2>Crear Cita</h2>
-      <form>
+
+      {error ? <p className='alerta-error'>Todos los campos son obligatorios</p> : null}
+
+      <form onSubmit={submitAppointment}>
         <label>Nombre Mascota</label>
         <input
           type='text'
