@@ -1,4 +1,5 @@
 import React, { Fragment, useState } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 const Form = () => {
   // Create State
@@ -28,10 +29,12 @@ const Form = () => {
       updateError(true);
       return;
     }
-  };
+    // Delete error message
+    updateError(false);
 
-  // Delete error message
-  updateError(false);
+    // Create an unique ID
+    appointment.id = uuidv4();
+  };
 
   return (
     <Fragment>
