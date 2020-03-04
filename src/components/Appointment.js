@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Appointment = ({ appointment }) => (
+const Appointment = ({ appointment, deleteAppointment }) => (
   <div className='cita'>
     <p>
       Mascota: <span>{appointment.pet}</span>
@@ -17,6 +17,10 @@ const Appointment = ({ appointment }) => (
     <p>
       Síntomas: <span>{appointment.symptom}</span>
     </p>
+
+    <button className='button eliminar u-full-width' onClick={() => deleteAppointment(appointment.id)}>
+      Eliminar &times;
+    </button>
   </div>
 );
 
