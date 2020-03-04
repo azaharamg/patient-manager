@@ -14,6 +14,8 @@ function App() {
     storeAppointments(newAppointments);
   };
 
+  const title = appointments.length === 0 ? 'No hay citas' : 'Administra tus Citas';
+
   return (
     <Fragment>
       <h1>Administrador de pacientes</h1>
@@ -23,7 +25,7 @@ function App() {
             <Form createAppointment={createAppointment} />
           </div>
           <div className='one-half column'>
-            <h2>Administra tus citas</h2>
+            <h2>{title}</h2>
             {appointments.map(appointment => (
               <Appointment key={appointment.id} appointment={appointment} deleteAppointment={deleteAppointment} />
             ))}
